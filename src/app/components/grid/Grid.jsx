@@ -54,16 +54,16 @@ const Grid = () => {
         Related Tools
       </div>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 p-2 xl:p-5">
-        {parksData.map((park) => (
+        {parksData.map((park,index) => (
           <Link href={park?.parkCode}>
             <article
-              key={park?.id}
+              key={index}
               className="relative bg-white border rounded shadow-md hover:shadow-teal-400"
             >
               <a className="relative block" href={park.url}>
                 <img
                   className="h-48 rounded relative w-full object-cover aspect-video"
-                  src={`${park?.images[0].url}?w=1080&h=720&fit=crop&auto=format&q=80`}
+                  src={`${park?.images[0]?.url}?w=1080&h=720&fit=crop&auto=format&q=80`}
                   alt={park?.fullName}
                   loading="lazy"
                 />
