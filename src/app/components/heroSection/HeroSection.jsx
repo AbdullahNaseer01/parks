@@ -19,9 +19,13 @@ export const HeroSection = () => {
   };
 
   const handleStateChange = (event) => {
-    setStateFilter(event.target.value);
+    setStateCode(event.target.value);
   };
   const handleSearch = async () => {
+    if (!activity) {
+      setError("Please enter a search term");
+      return;
+    }
     setLoading(true);
     const params = {
       limit: "10",
@@ -73,7 +77,7 @@ export const HeroSection = () => {
               className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-orange-900 focus:border-orange-400 focus:outline-none focus:shadow-outline"
             />
             <select
-              value={stateFilter}
+              value={stateCode}
               onChange={handleStateChange}
               className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-orange-900 focus:border-orange-400 focus:outline-none focus:shadow-outline"
             >
