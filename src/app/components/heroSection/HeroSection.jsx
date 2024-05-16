@@ -23,7 +23,7 @@ export const HeroSection = () => {
   };
   const handleSearch = async () => {
     if (!stateCode) {
-      setError("Please enter a search term");
+      alert("Please enter a search term");
       return;
     }
     setLoading(true);
