@@ -22,7 +22,7 @@ export const HeroSection = () => {
     setStateCode(event.target.value);
   };
   const handleSearch = async () => {
-    if (!activity) {
+    if (!stateCode) {
       setError("Please enter a search term");
       return;
     }
