@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -79,7 +79,7 @@ const Carousel = () => {
         disableOnInteraction: false,
       }}
       modules={[EffectFade, Autoplay]}
-      className="mySwiper"
+      // className="mySwiper"
       style={{ width: '100%', height: '100vh' }}
     >
       {images.map((src, index) => (
