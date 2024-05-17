@@ -46,7 +46,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <div className="relative bg-orange-400">
+    <div className="relative bg-[#f9dd9c]">
       <div className="absolute inset-x-0 bottom-0">
         <svg
           viewBox="0 0 224 12"
@@ -59,13 +59,12 @@ export const HeroSection = () => {
       </div>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-          <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-            The quick, brown fox
-            <br className="hidden md:block" />
-            jumps over a{" "}
+          <h2 className="mb-10 font-sans text-3xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none ">
+          Discover amazing features and services that await you.
+          
             <span className="relative inline-block px-2">
-              <div className="absolute inset-0 transform -skew-x-12 bg-orange-200" />
-              <span className="relative text-orange-900">lazy dog</span>
+              <div className="absolute inset-0 transform -skew-x-12 " />
+              <span className="relative text-[#FA7436]">Explore Now</span>
             </span>
           </h2>
           <form className="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
@@ -74,12 +73,12 @@ export const HeroSection = () => {
               type="text"
               value={activity}
               onChange={handleActivityChange}
-              className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-orange-900 focus:border-orange-400 focus:outline-none focus:shadow-outline"
+              className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-[#389B87]  focus:outline-none focus:shadow-outline"
             />
             <select
               value={stateCode}
               onChange={handleStateChange}
-              className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-orange-900 focus:border-orange-400 focus:outline-none focus:shadow-outline"
+              className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-[#389B87]  focus:outline-none focus:shadow-outline"
             >
               <option value="">Select State</option>
               <option value="AL">Alabama</option>
@@ -138,16 +137,13 @@ export const HeroSection = () => {
             <button
               type="button"
               onClick={handleSearch}
-              className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-orange-900 transition duration-200 rounded shadow-md md:w-auto hover:text-orange-800 bg-orange-200 hover:bg-orange-300 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-[#389B87] transition duration-200 rounded shadow-md md:w-auto hover:text-[#389B87] bg-[#FEFCFB]  focus:shadow-outline focus:outline-none"
               disabled={loading}
             >
               {loading ? "Searching..." : "Search"}
             </button>
           </form>
-          <p className="max-w-md mb-10 text-xs tracking-wide text-orange-100 sm:text-sm sm:mx-auto md:mb-16">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque.
-          </p>
+
           <a
             href="/"
             aria-label="Scroll down"
