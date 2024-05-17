@@ -26,7 +26,7 @@ const Page = ({ params }) => {
     <div>
       {parkDetails ? (
         <div>
-          <DetailsHeroSection images={parkDetails?.images} interval={5000} />
+          <DetailsHeroSection images={parkDetails?.images} interval={6000} />
           <h2>{parkDetails.fullName}</h2>
           <p>Description: {parkDetails.description}</p>
           <AnimatedCards images={parkDetails?.images} />
