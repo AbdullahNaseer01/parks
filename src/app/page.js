@@ -22,7 +22,7 @@ export default function Home() {
   
    {/* <AnimatedCards/> */}
    <Blogs/>
-   <LocationDetails/>
+   {/* <LocationDetails/> */}
   
    </>
   );
