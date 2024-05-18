@@ -1,9 +1,10 @@
-// 'use client'
+'use client'
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { EffectFade, Autoplay } from 'swiper/modules';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,9 +37,9 @@ const Navbar = () => {
         <nav>
           <ul className="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#">
+              <Link  className="md:p-4 py-3 px-0 block" href="/about">
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
               <a className="md:p-4 py-3 px-0 block" href="#">
@@ -51,9 +52,9 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a className="md:p-4 py-3 px-0 block md:mb-0 mb-2" href="#">
+              <Link href={'/contact'} className="md:p-4 py-3 px-0 block md:mb-0 mb-2" >
                 Contact Us
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

@@ -9,6 +9,8 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect } from "react";
 
+import Blogs from "./components/blogs/Blogs";
+import LocationDetails from "./components/Location/LocationDetails";
 export default function Home() {
   useEffect(() => {
     AOS.init();
@@ -40,11 +42,16 @@ export default function Home() {
   }, []);
   
   return (
-    <>
-      <HomePage />
-      <HeroSection />
-      <Grid />
-      <AnimatedCards />
-    </>
+   <>
+  
+   <HomePage/>
+   <HeroSection />
+   <Grid/>
+  
+   {/* <AnimatedCards/> */}
+   <Blogs/>
+   {/* <LocationDetails/> */}
+  
+   </>
   );
 }
