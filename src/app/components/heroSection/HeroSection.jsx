@@ -25,7 +25,7 @@ export const HeroSection = () => {
     if (!activity && !stateCode) {
       alert("Please enter a search term");
       return;
-    }
+    } 
     setLoading(true);
     const params = {
       limit: "10",
