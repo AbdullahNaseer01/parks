@@ -58,9 +58,7 @@ export const HeroSection = () => {
         </svg>
       </div>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"  data-aos="zoom-in-left"
-    data-aos-offset="300"
-    // data-aos-delay="50"
-    data-aos-duration="4000" >
+    data-aos-duration="2000" >
         <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
           <h2 className="mb-10 font-sans text-3xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none ">
           Discover amazing features and services that await you.
