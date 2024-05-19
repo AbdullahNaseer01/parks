@@ -57,10 +57,10 @@
 // }
 "use client";
 import React from "react";
-import HomePage from "./components/homePage/Home";
 import SearchOptions from "./components/searchOptions/SearchOptions";
 import Blogs from "./components/blogs/Blogs";
 import Grid from "./components/grid/Grid";
+import HomePage from "./components/homePage/HomePage";
 
 const page = () => {
   return (
