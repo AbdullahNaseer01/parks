@@ -3,7 +3,6 @@ import Team from './Team'
 import Achievement from './Achievement'
 import Header from './Header'
 // import Home from '../page'
-import HomePage from '../components/homePage/Home'
 import Navbar from '../components/navbar/Navbar'
 
 function AboutUs() {

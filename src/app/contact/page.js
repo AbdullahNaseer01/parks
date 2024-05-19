@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import HomePage from "../components/homePage/Home";
 import AboutDetail from "./AboutDetail";
 import Navbar from "../components/navbar/Navbar";
 
@@ -22,7 +21,7 @@ function Contact() {
                 <div className="mb-3 w-full">
                   <label
                     className="block font-medium mb-[2px] text-teal-700"
-                    htmlfor="exampleInput90"
+                    htmlFor="exampleInput90"
                   >
                     Name
                   </label>
@@ -36,7 +35,7 @@ function Contact() {
                 <div className="mb-3 w-full">
                   <label
                     className="block font-medium mb-[2px] text-teal-700"
-                    htmlfor="exampleInput90"
+                    htmlFor="exampleInput90"
                   >
                     Email
                   </label>
@@ -50,7 +49,7 @@ function Contact() {
                 <div className="mb-3 w-full">
                   <label
                     className="block font-medium mb-[2px] text-teal-700"
-                    htmlfor="exampleInput90"
+                    htmlFor="exampleInput90"
                   >
                     Message
                   </label>
