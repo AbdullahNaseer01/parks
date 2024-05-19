@@ -75,7 +75,7 @@ const SearchOptions = () => {
             </div>
           </Link>
           <Link
-            href="/search?search=lesson-plans"
+            href="/search?search=lessonplans"
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
@@ -86,7 +86,7 @@ const SearchOptions = () => {
             </div>
           </Link>
           <Link
-            href="/search?search=things-to-do"
+            href="/search?search=thingstodo"
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>

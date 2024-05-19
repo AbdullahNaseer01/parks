@@ -3,10 +3,19 @@ import React, { Suspense, useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar"; // Assuming Navbar is a separate component
 import { useRouter, useSearchParams } from "next/navigation";
 import Grid from "../components/grid/Grid";
-
+import { useDispatch } from "react-redux";
+import { fetchActivities } from "../redux/slices/activitiesSlice";
+import { fetchAmenities } from "../redux/slices/amenitiesSlice";
+import { fetchArticles } from "../redux/slices/articalsSlice";
+import { fetchCampgrounds } from "../redux/slices/campgroundSlice";
+import { fetchEvents } from "../redux/slices/eventsSlice";
+import { fetchLessonPlans } from "../redux/slices/lessonPlansSlice";
+import { fetchThingsToDo } from "../redux/slices/thingsToDoSlice";
+import { fetchTopics } from "../redux/slices/topicsSlice";
 const SearchComponent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -16,8 +25,8 @@ const SearchComponent = () => {
     articles: "Articles",
     campgrounds: "Campgrounds",
     events: "Events",
-    "lesson-plans": "Lesson Plans",
-    "things-to-do": "Things to do",
+    lessonplans: "Lesson Plans",
+    thingstodo: "Things to do",
     topics: "Topics",
   };
 
@@ -29,8 +38,8 @@ const SearchComponent = () => {
       articles: "Articles",
       campgrounds: "Campgrounds",
       events: "Events",
-      "lesson-plans": "Lesson Plans",
-      "things-to-do": "Things to do",
+      lessonplans: "Lesson Plans",
+      thingstodo: "Things to do",
       topics: "Topics",
     };
 
@@ -50,17 +59,55 @@ const SearchComponent = () => {
       Articles: "articles",
       Campgrounds: "campgrounds",
       Events: "events",
-      "Lesson Plans": "lesson-plans",
-      "Things to do": "things-to-do",
+      "Lesson Plans": "lessonplans",
+      "Things to do": "thingstodo",
       Topics: "topics",
     };
     const newSearch = optionToSearchMap[newOption];
     router.push(`/search?search=${newSearch}`);
   };
 
-  const handleSearchButtonClick = () => {
+  const handleSearchButtonClick = async () => {
     console.log("Search Value:", search);
     console.log("Selected Option:", selectedOption);
+
+    const params = {
+      limit: "10",
+      start: "0",
+      // if(search) {
+      //   params.q = search;
+      // },
+    };
+
+    switch (selectedOption) {
+      case "Activities":
+        await dispatch(fetchActivities(params));
+        break;
+      case "Amenities":
+        await dispatch(fetchAmenities(params));
+        break;
+      case "Articles":
+        await dispatch(fetchArticles(params));
+        break;
+      case "Campgrounds":
+        await dispatch(fetchCampgrounds(params));
+        break;
+      case "Events":
+        await dispatch(fetchEvents(params));
+        break;
+      case "Lesson Plans":
+        await dispatch(fetchLessonPlans(params));
+        break;
+      case "Things to do":
+        await dispatch(fetchThingsToDo(params));
+        break;
+      case "Topics":
+        await dispatch(fetchTopics(params));
+        break;
+      default:
+        console.warn("No matching option found for dispatch");
+        break;
+    }
   };
 
   return (
