@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ styleProps = {} }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -12,8 +12,8 @@ const Navbar = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 lg:px-16 px-4 bg-transparent flex flex-wrap items-center py-4">
       <div className="flex-1 flex justify-between items-center">
-        <Link href="/" className="text-xl text-white">
-          Company
+        <Link href="/" className="text-xl" style={styleProps}>
+        TrailTales
         </Link>
       </div>
       <label
@@ -22,7 +22,8 @@ const Navbar = () => {
         onClick={toggleNavbar}
       >
         <svg
-          className="fill-current text-white"
+          className="fill-current"
+          style={{ color: styleProps.color || "white" }}
           xmlns="http://www.w3.org/2000/svg"
           width={20}
           height={20}
@@ -40,14 +41,18 @@ const Navbar = () => {
         id="menu"
       >
         <nav>
-          <ul className="md:flex items-center justify-between text-base text-white pt-4 md:pt-0">
+          <ul className="md:flex items-center justify-between text-base pt-4 md:pt-0">
             <li>
-              <Link className="md:p-4 py-3 px-0 block" href="/about">
+              <Link
+                className="md:p-4 py-3 px-0 block"
+                href="/about"
+                style={styleProps}
+              >
                 About Us
               </Link>
             </li>
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#">
+              <a className="md:p-4 py-3 px-0 block" href="#" style={styleProps}>
                 Treatments
               </a>
             </li>
@@ -55,12 +60,16 @@ const Navbar = () => {
               <Link
                 href="/contact"
                 className="md:p-4 py-3 px-0 block md:mb-0 mb-2"
+                style={styleProps}
               >
                 Contact Us
               </Link>
             </li>
-            <li className="border rounded-md border-white">
-              <Link href="/search" className="p-2 block">
+            <li
+              className="border rounded-md"
+              style={{ borderColor: styleProps.color || "white" }}
+            >
+              <Link href="/search" className="p-2 block" style={styleProps}>
                 Search
               </Link>
             </li>

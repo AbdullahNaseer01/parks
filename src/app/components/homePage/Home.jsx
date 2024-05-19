@@ -165,7 +165,7 @@ const Carousel = () => {
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <Navbar styleProps={{color:"white"}} />
       <Carousel />
     </>
   );
