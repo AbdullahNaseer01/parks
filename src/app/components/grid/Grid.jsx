@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchParks } from "../../redux/slices/parksSlice";
 import Link from "next/link";
+import { SkeletonGrid } from "../sleleton/Skeleton";
 
 const Grid = () => {
   const dispatch = useDispatch();
@@ -43,78 +44,139 @@ const Grid = () => {
   };
 
   const totalPages = Math.ceil(totalResults / limit);
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
+
+  const getPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, "...", totalPages);
+      } else if (currentPage > 3 && currentPage < totalPages - 2) {
+        pages.push(
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages
+        );
+      } else {
+        pages.push(
+          1,
+          "...",
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages
+        );
+      }
+    }
+    return pages;
+  };
+
+  if (parksLoading) {
+    return (
+      <>
+        <SkeletonGrid />
+      </>
+    );
+  }
+
+  if (parksError) {
+    return <div>Error: {parksError}</div>;
   }
 
   return (
-    <div className="max-w-7xl mx-auto my-8 px-2">
+    <div className=" mx-auto my-8 lg:px-16 px-4">
       <div className="flex justify-center text-2xl md:text-3xl font-bold">
-        Related Tools
+        Search Results
       </div>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 p-2 xl:p-5">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {parksData.map((park, index) => (
           <Link href={park?.parkCode} key={index}>
-            <article className="relative bg-white border rounded shadow-md hover:shadow-teal-400">
-              <a className="relative block" href={park.url}>
+            <div className="flex px-3 py-3 h-[650px] overflow-hidden">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg">
                 <img
-                  className="h-48 rounded relative w-full object-cover aspect-video"
+                  className="w-full h-48 object-cover"
                   src={`${park?.images[0]?.url}?w=1080&h=720&fit=crop&auto=format&q=80`}
                   alt={park?.fullName}
-                  loading="lazy"
                 />
-              </a>
-              <div className="p-4">
-                <a
-                  href={park.url}
-                  className="block text-xl font-semibold text-teal-700 hover:text-teal-800 two-lines text-ellipsis"
-                >
-                  <span>{park?.fullName}</span>
-                </a>
-                <p className="text-gray-600 two-lines">{park?.description}</p>
-                <div className="flex flex-wrap items-center justify-start text-sm gap-2 my-1">
-                  <div className="flex items-center gap-2">
-                    <span>Pricing type: </span>
-                    <span>Freemium</span>
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">
+                    {park?.fullName.length > 100
+                      ? `${park?.fullName.substring(0, 97)}...`
+                      : park?.fullName}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span>Activities: </span>
-                    {/* {park.activities.map(activity => (
-            <span key={activity.id}>{activity.name}, </span>
-          ))} */}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>Topics: </span>
-                    {/* {park.topics.map(topic => (
-            <span key={topic.id}>{topic.name}, </span>
-          ))} */}
-                  </div>
+                  <p className="text-gray-700 text-base">
+                    {park?.description.length > 250
+                      ? `${park?.description.substring(0, 247)}...`
+                      : park?.description}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span>State: {park?.states}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span>
-                    Contact: {park?.contacts?.phoneNumbers[0]?.phoneNumber}
-                  </span>
+                <div className="px-6 py-4">
+                  {[
+                    ...park.activities.slice(0, 3),
+                    ...park.topics.slice(0, 2),
+                  ].map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                    >
+                      #{tag.name}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </article>
+            </div>
           </Link>
         ))}
       </div>
       {/* Pagination */}
       <div className="flex justify-center mt-4">
-        <ul className="flex">
-          {pageNumbers.map((number) => (
+        <ul className="flex items-center space-x-2">
+          {currentPage > 1 && (
+            <li>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                className="px-3 py-1 border rounded"
+              >
+                Back
+              </button>
+            </li>
+          )}
+          {getPageNumbers().map((number, index) => (
             <li
-              key={number}
+              key={index}
               className={`mx-1 ${currentPage === number ? "font-bold" : ""}`}
             >
-              <button onClick={() => handlePageChange(number)}>{number}</button>
+              {number === "..." ? (
+                <span className="px-3 py-1">...</span>
+              ) : (
+                <button
+                  onClick={() => handlePageChange(number)}
+                  className={`px-3 py-1 border rounded ${
+                    currentPage === number ? "bg-blue-500 text-white" : ""
+                  }`}
+                >
+                  {number}
+                </button>
+              )}
             </li>
           ))}
+          {currentPage < totalPages && (
+            <li>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                className="px-3 py-1 border rounded"
+              >
+                Next
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </div>

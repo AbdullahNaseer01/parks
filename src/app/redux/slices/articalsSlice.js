@@ -4,19 +4,19 @@ import axios from "axios";
 // Define initial state
 const initialState = {
   data: [],
-  parkDetails: null, // New state to store park details
+  articleDetails: null, // New state to store article details
   loading: false,
   error: null,
 };
 
-// Define async thunk for fetching parks
-export const fetchParks = createAsyncThunk(
-  "parks/fetchParks",
+// Define async thunk for fetching articles
+export const fetchArticles = createAsyncThunk(
+  "articles/fetchArticles",
   async (params) => {
     try {
       const options = {
         method: "GET",
-        url: "https://developer.nps.gov/api/v1/parks",
+        url: "https://developer.nps.gov/api/v1/articles",
         params: params,
         headers: {
           "X-Api-Key": "gSwKu55KzwcQZdpTNQqqkG6t0m9orXYbFff25MFi",
@@ -29,6 +29,7 @@ export const fetchParks = createAsyncThunk(
         data: response.data,
         params: paramsData,
       };
+      console.log(finalResponse);
       return finalResponse;
     } catch (error) {
       throw error;
@@ -36,13 +37,13 @@ export const fetchParks = createAsyncThunk(
   }
 );
 
-export const fetchParkDetails = createAsyncThunk(
-  "parks/fetchParkDetails", // Corrected action type
-  async (parkCode) => { // Changed params to parkCode to fetch details of a specific park
+export const fetchArticleDetails = createAsyncThunk(
+  "articles/fetchArticleDetails", // Corrected action type
+  async (articleId) => { // Changed params to articleId to fetch details of a specific article
     try {
       const options = {
         method: "GET",
-        url: `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}`, // Use correct URL path for park details
+        url: `https://developer.nps.gov/api/v1/articles?id=${articleId}`, // Use correct URL path for article details
         params: {
           // Add any additional params if needed
         },
@@ -52,45 +53,45 @@ export const fetchParkDetails = createAsyncThunk(
       };
 
       const response = await axios.request(options);
-      return response.data; // Return only the data of the park details
+      return response.data; // Return only the data of the article details
     } catch (error) {
       throw error;
     }
   }
 );
 
-// Define parks slice
-const parksSlice = createSlice({
-  name: "parks",
+// Define articles slice
+const articlesSlice = createSlice({
+  name: "articles",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchParks.pending, (state) => {
+      .addCase(fetchArticles.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchParks.fulfilled, (state, action) => {
+      .addCase(fetchArticles.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchParks.rejected, (state, action) => {
+      .addCase(fetchArticles.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(fetchParkDetails.pending, (state) => { // Add pending case for fetchParkDetails
+      .addCase(fetchArticleDetails.pending, (state) => { // Add pending case for fetchArticleDetails
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchParkDetails.fulfilled, (state, action) => { // Add fulfilled case for fetchParkDetails
+      .addCase(fetchArticleDetails.fulfilled, (state, action) => { // Add fulfilled case for fetchArticleDetails
         state.loading = false;
-        state.parkDetails = action.payload;
+        state.articleDetails = action.payload;
       })
-      .addCase(fetchParkDetails.rejected, (state, action) => { // Add rejected case for fetchParkDetails
+      .addCase(fetchArticleDetails.rejected, (state, action) => { // Add rejected case for fetchArticleDetails
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default parksSlice.reducer;
+export default articlesSlice.reducer;

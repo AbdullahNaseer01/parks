@@ -1,7 +1,8 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ styleProps = {} }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -9,15 +10,20 @@ const Navbar = () => {
   };
 
   return (
-    <header className="lg:px-16 px-4 bg-white flex flex-wrap items-center py-4 shadow-md">
+    <header className="absolute top-0 left-0 right-0 z-50 lg:px-16 px-4 bg-transparent flex flex-wrap items-center py-4">
       <div className="flex-1 flex justify-between items-center">
-        <a href="#" className="text-xl">
-          Company
-        </a>
+        <Link href="/" className="text-xl" style={styleProps}>
+        TrailTales
+        </Link>
       </div>
-      <label htmlFor="menu-toggle" className="pointer-cursor md:hidden block" onClick={toggleNavbar}>
+      <label
+        htmlFor="menu-toggle"
+        className="pointer-cursor md:hidden block"
+        onClick={toggleNavbar}
+      >
         <svg
-          className="fill-current text-gray-900"
+          className="fill-current"
+          style={{ color: styleProps.color || "white" }}
           xmlns="http://www.w3.org/2000/svg"
           width={20}
           height={20}
@@ -28,28 +34,44 @@ const Navbar = () => {
         </svg>
       </label>
       <input className="hidden" type="checkbox" id="menu-toggle" />
-      <div className={`md:flex md:items-center md:w-auto w-full ${isOpen ? 'block' : 'hidden'}`} id="menu">
+      <div
+        className={`md:flex md:items-center md:w-auto w-full ${
+          isOpen ? "block" : "hidden"
+        }`}
+        id="menu"
+      >
         <nav>
-          <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+          <ul className="md:flex items-center justify-between text-base pt-4 md:pt-0">
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#">
+              <Link
+                className="md:p-4 py-3 px-0 block"
+                href="/about"
+                style={styleProps}
+              >
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#">
+              <a className="md:p-4 py-3 px-0 block" href="#" style={styleProps}>
                 Treatments
               </a>
             </li>
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a className="md:p-4 py-3 px-0 block md:mb-0 mb-2" href="#">
+              <Link
+                href="/contact"
+                className="md:p-4 py-3 px-0 block md:mb-0 mb-2"
+                style={styleProps}
+              >
                 Contact Us
-              </a>
+              </Link>
+            </li>
+            <li
+              className="border rounded-md"
+              style={{ borderColor: styleProps.color || "white" }}
+            >
+              <Link href="/search" className="p-2 block" style={styleProps}>
+                Search
+              </Link>
             </li>
           </ul>
         </nav>
