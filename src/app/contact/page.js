@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePage from '../components/homePage/Home'
+import {HomePage} from '../components/homePage/Home'
 import AboutDetail from './AboutDetail'
 
 function Contact() {

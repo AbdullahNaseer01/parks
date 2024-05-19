@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="px-3 pt-4 lg:px-9  bg-[#282A35]">
+    <footer className=" pt-4 lg:px-16 px-4  bg-[#282A35]">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <a href="#" className="inline-flex items-center">
