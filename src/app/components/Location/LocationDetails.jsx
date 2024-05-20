@@ -7,10 +7,10 @@ const LocationDetails = ({
   children,
 }) => {
   return (
-    <section className=" shadow-md rounded-md">
+    <section className="shadow-md rounded-md text-[#389b87]">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-20 lg:px-8">
         <div className="max-w-2xl lg:max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900" id="contactUs">
+          <h2 className="text-3xl font-extrabold text-[#389b87]" id="contactUs">
             Address information
           </h2>
           <p className="mt-3 text-lg text-gray-500">
@@ -22,7 +22,7 @@ const LocationDetails = ({
             <div>
               <div className="max-w-full mx-auto rounded-lg overflow-hidden">
                 <div className="border-t border-gray-200 px-6 py-4">
-                  <h3 className="text-lg font-bold text-gray-900">Contact</h3>
+                  <h3 className="text-lg font-bold text-[#389b87]">Contact</h3>
                   <p className="mt-1 text-gray-600">
                     {phoneNumbers?.map((phone, index) => (
                       <span key={index} className="block">
@@ -38,7 +38,7 @@ const LocationDetails = ({
                   ))}
                 </div>
                 <div className="px-6 py-4">
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-[#389b87]">
                     Our Address
                   </h3>
                   {addresses?.map((address, index) => (
@@ -49,7 +49,7 @@ const LocationDetails = ({
                   ))}
                 </div>
                 <div className="border-t border-gray-200 px-6 py-4">
-                  <h3 className="text-lg font-medium text-gray-900">Hours</h3>
+                  <h3 className="text-lg font-medium text-[#389b87]">Hours</h3>
                   <p className="mt-1 text-gray-600">
                     Monday - Sunday : 2pm - 9pm
                   </p>
