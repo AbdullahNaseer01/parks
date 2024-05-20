@@ -24,7 +24,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaHiking className="mx-auto text-green-500 text-3xl" />
+              <FaHiking className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Activities
               </p>
@@ -35,7 +35,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaMapMarkerAlt className="mx-auto text-green-500 text-3xl" />
+              <FaMapMarkerAlt className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Amenities
               </p>
@@ -46,7 +46,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaNewspaper className="mx-auto text-green-500 text-3xl" />
+              <FaNewspaper className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Articles
               </p>
@@ -57,7 +57,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <LiaCampgroundSolid className="mx-auto text-green-500 text-3xl" />
+              <LiaCampgroundSolid className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 campgrounds
               </p>
@@ -68,7 +68,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaCalendarAlt className="mx-auto text-green-500 text-3xl" />
+              <FaCalendarAlt className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Events
               </p>
@@ -79,7 +79,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaClipboardList className="mx-auto text-green-500 text-3xl" />
+              <FaClipboardList className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Lesson Plans
               </p>
@@ -90,7 +90,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaMapMarkerAlt className="mx-auto text-green-500 text-3xl" />
+              <FaMapMarkerAlt className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Things to do
               </p>
@@ -101,7 +101,7 @@ const SearchOptions = () => {
             className="block w-1/2 py-10 text-center border lg:w-1/4"
           >
             <div>
-              <FaComments className="mx-auto text-green-500 text-3xl" />
+              <FaComments className="mx-auto text-[#389b87] text-3xl" />
               <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
                 Topics
               </p>
