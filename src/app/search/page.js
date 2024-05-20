@@ -14,7 +14,6 @@ import { fetchTopics } from "../redux/slices/topicsSlice";
 import Loading from "../loading";
 import SearchGrid from "../components/searchGrid/SearchGrid";
 import Link from "next/link";
-
 const SearchComponent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
