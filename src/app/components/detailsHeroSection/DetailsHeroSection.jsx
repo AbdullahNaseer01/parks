@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from "react";
 
 const DetailsHeroSection = ({ images, interval = 3000 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, interval);
+useEffect(() => {
+  const timer = setInterval(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, interval);
 
-    return () => clearInterval(timer);
-  }, [images.length, interval]);
+  return () => clearInterval(timer);
+}, [images.length, interval]);
 
   return (
     <div className="relative h-screen w-full">
@@ -30,3 +30,4 @@ const DetailsHeroSection = ({ images, interval = 3000 }) => {
 };
 
 export default DetailsHeroSection;
+

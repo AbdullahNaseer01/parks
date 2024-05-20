@@ -159,7 +159,7 @@ const Grid = () => {
                 <button
                   onClick={() => handlePageChange(number)}
                   className={`px-3 py-1 border rounded ${
-                    currentPage === number ? "bg-blue-500 text-white" : ""
+                    currentPage === number ? "bg-[#389B87] text-white" : ""
                   }`}
                 >
                   {number}
