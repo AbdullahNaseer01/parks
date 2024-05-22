@@ -39,7 +39,8 @@ export const fetchArticles = createAsyncThunk(
 
 export const fetchArticleDetails = createAsyncThunk(
   "articles/fetchArticleDetails", // Corrected action type
-  async (articleId) => { // Changed params to articleId to fetch details of a specific article
+  async (articleId) => {
+    // Changed params to articleId to fetch details of a specific article
     try {
       const options = {
         method: "GET",
@@ -79,15 +80,18 @@ const articlesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(fetchArticleDetails.pending, (state) => { // Add pending case for fetchArticleDetails
+      .addCase(fetchArticleDetails.pending, (state) => {
+        // Add pending case for fetchArticleDetails
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchArticleDetails.fulfilled, (state, action) => { // Add fulfilled case for fetchArticleDetails
+      .addCase(fetchArticleDetails.fulfilled, (state, action) => {
+        // Add fulfilled case for fetchArticleDetails
         state.loading = false;
         state.articleDetails = action.payload;
       })
-      .addCase(fetchArticleDetails.rejected, (state, action) => { // Add rejected case for fetchArticleDetails
+      .addCase(fetchArticleDetails.rejected, (state, action) => {
+        // Add rejected case for fetchArticleDetails
         state.loading = false;
         state.error = action.error.message;
       });

@@ -66,9 +66,6 @@ const page = () => {
   return (
     <>
       <HomePage />
-      <SearchOptions />
-      <Grid />
-      <Blogs />
     </>
   );
 };

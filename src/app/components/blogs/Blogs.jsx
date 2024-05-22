@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArticles } from "../../redux/slices/articalsSlice";
 import { TreeSpinner } from "../sleleton/Skeleton";
+import Link from "next/link";
 
 function Blogs() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function Blogs() {
   }, [dispatch, activity, stateCode]);
 
   if (loading) {
-    return <TreeSpinner/>
+    return <TreeSpinner />;
   }
 
   if (error) {
@@ -41,7 +42,7 @@ function Blogs() {
 
   const renderMainArticle = (article) => (
     <div className="sm:col-span-6 lg:col-span-5">
-      <a href="#">
+      <Link href={""} className="">
         <div
           className="h-56 bg-cover text-center overflow-hidden"
           style={{
@@ -49,21 +50,23 @@ function Blogs() {
           }}
           title={article.title}
         ></div>
-      </a>
+      </Link>
       <div className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
         <div className="lg:pl-16">
-          <a
-            href="#"
+          <Link
+            href={article?.url}
+            target="_blank"
             className="text-xs text-indigo-600 uppercase font-medium mb-3 flex items-center hover:text-gray-900 transition duration-500 ease-in-out"
           >
-            {article.category || "Category"}
-          </a>
-          <a
-            href="#"
+            {article.category || "Article"}
+          </Link>
+          <Link
+            href={article?.url}
+            target="_blank"
             className="text-gray-900 font-bold text-lg mb-2 hover:text-indigo-600 transition duration-500 ease-in-out"
           >
             {article.title}
-          </a>
+          </Link>
           <p className="text-gray-700 text-xs mt-2">
             {article?.listingDescription || "No description available."}
           </p>
@@ -76,24 +79,29 @@ function Blogs() {
     <div className="sm:col-span-6 lg:col-span-4">
       {articles.map((article, index) => (
         <div key={index} className="flex items-start mb-3 pb-3">
-          <a href="#" className="inline-block mr-3">
+          <Link
+            href={article?.url}
+            target="_blank"
+            className="inline-block mr-3"
+          >
             <div
               className="w-20 h-20 bg-cover bg-center"
               style={{
                 backgroundImage: `url(${article.listingImage?.url})`,
               }}
             ></div>
-          </a>
+          </Link>
           <div className="text-sm">
             <p className="text-gray-600 text-xs">
               {new Date(article.date).toLocaleDateString()}
             </p>
-            <a
-              href="#"
+            <Link
+              href={article?.url}
+              target="_blank"
               className="text-gray-900 font-medium hover:text-indigo-600 leading-none"
             >
               {article.title}
-            </a>
+            </Link>
           </div>
         </div>
       ))}
@@ -102,7 +110,7 @@ function Blogs() {
 
   const renderSideArticle = (article) => (
     <div className="sm:col-span-12 lg:col-span-3">
-      <a href="#">
+      <Link href={article?.url} target="_blank">
         <div
           className="h-56 bg-cover text-center overflow-hidden"
           style={{
@@ -110,21 +118,23 @@ function Blogs() {
           }}
           title={article.title}
         ></div>
-      </a>
+      </Link>
       <div className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
         <div>
-          <a
-            href="#"
+          <Link
+            href={article?.url}
+            target="_blank"
             className="text-xs text-indigo-600 uppercase font-medium flex items-center hover:text-gray-900 transition duration-500 ease-in-out"
           >
-            {article.category || "Category"}
-          </a>
-          <a
-            href="#"
+            {article.category || "Article"}
+          </Link>
+          <Link
+            href={article?.url}
+            target="_blank"
             className="text-gray-900 font-bold text-lg mb-2 hover:text-indigo-600 transition duration-500 ease-in-out"
           >
             {article.title}
-          </a>
+          </Link>
           <p className="text-gray-700 text-xs mt-2">
             {article.description || "No description available."}
           </p>
@@ -140,6 +150,16 @@ function Blogs() {
         {articles.length > 1 && renderSecondaryArticles(articles.slice(1, 5))}
         {articles[5] && renderSideArticle(articles[5])}
       </div>
+      {articles.length > 0 && (
+        <Link
+          className="text-center flex align-middle justify-center"
+          href="https://nationalparks-psi.vercel.app/search?search=articles"
+        >
+          <button className="bg-[#389B87] hover:bg-[#5db5a4] text-white font-bold py-2 px-4 rounded mt-5">
+            View More
+          </button>
+        </Link>
+      )}
     </div>
   );
 }
