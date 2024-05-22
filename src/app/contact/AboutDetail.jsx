@@ -5,7 +5,7 @@ function AboutDetail() {
   return (
     <>
       <>
-        <div className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-16">
+        <div className="container relative flex flex-col justify-between h-full lg:px-16 px-4 mx-auto mt-16">
           <p className="mb-1 text-lg text-[#389b87]">THIS IS OUR MISSION...</p>
           <h2 className="mb-1 text-3xl lg:text-6xl font-extrabold leading-tight text-gray-900">
             We believe in Nature <br />{" "}

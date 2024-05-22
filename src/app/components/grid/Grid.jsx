@@ -99,7 +99,7 @@ const Grid = () => {
         <div className="flex justify-center text-2xl md:text-3xl font-bold">
           Search Results
         </div>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
           {parksData.map((park, index) => (
             <Link href={park?.parkCode} key={index}>
               <div className="flex px-3 py-3 h-[650px] overflow-hidden">
