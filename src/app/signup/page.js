@@ -28,9 +28,9 @@ const Page = () => {
     }
   };
 
-  const handleGoogleSignin = () => {
+  const handleGoogleSignin = async () => {
     try {
-      dispatch(googleSignin());
+      await dispatch(googleSignin());
       toast.success("Successfully signed in with Google");
       Router.push("/");
     } catch (error) {
