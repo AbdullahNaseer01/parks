@@ -7,7 +7,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const Router = useRouter();
@@ -167,4 +167,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
