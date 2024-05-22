@@ -265,7 +265,7 @@ const Carousel = ({ onSearch }) => {
             />
             <div className="absolute inset-0 flex flex-col lg:items-start justify-center bg-black bg-opacity-50 text-white ">
               <h1 className="text-3xl lg:text-5xl font-bold leading-tight mb-4 lg:text-justify lg:w-[45%] lg:px-16 px-4">
-                It’s a Big World Out There,{" "}
+                Its a Big World Out There,{" "}
                 <span className="text-[#FFB60A]">Go Explore</span>
               </h1>
               <p className="text-base text-gray-300 mb-8 lg:mb-0 lg:text-3xl lg:px-16 px-4">
