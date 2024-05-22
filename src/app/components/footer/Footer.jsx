@@ -12,7 +12,7 @@ function Footer() {
               className="h-8 w-8"
             />
             <span className="ml-2 text-xl font-bold tracking-wide text-white">
-              Company Name
+            TrailTales
             </span>
           </a>
           <div className="mt-6 lg:max-w-xl">
@@ -43,7 +43,7 @@ function Footer() {
         </div>
         <div>
           <p className="text-base font-bold tracking-wide text-white">
-            COMPANY IS ALSO AVAILABLE ON
+          TrailTales IS ALSO AVAILABLE ON
           </p>
           <div className="flex items-center gap-1 px-2">
             <a href="#" className="w-full min-w-xl">
@@ -70,14 +70,14 @@ function Footer() {
           <div className="flex">
             <p className="mr-1 text-white">Email:</p>
             <a href="#" title="send email" className="text-white">
-              admin@company.com
+              admin@TrailTales.com
             </a>
           </div>
         </div>
       </div>
       <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
         <p className="text-sm text-white">
-          © Copyright 2023 Company. All rights reserved.
+          © Copyright 2024 TrailTales. All rights reserved.
         </p>
         <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
           <li>
