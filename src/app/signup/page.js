@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,7 @@ const Page = () => {
       return;
     } else if (password.length < 8) {
       toast.error("Password should be at least 8 characters long");
-      return
+      return;
     } else {
       dispatch(registerUser({ email, password, displayName }));
       Router.push("/");
@@ -29,7 +29,13 @@ const Page = () => {
   };
 
   const handleGoogleSignin = () => {
-    dispatch(googleSignin());
+    try {
+      dispatch(googleSignin());
+      toast.success("Successfully signed in with Google");
+      Router.push("/");
+    } catch (error) {
+      toast.error("Error signing in with Google");
+    }
   };
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
@@ -104,7 +110,9 @@ const Page = () => {
                   >
                     {isLoading ? "Loading..." : "Submit"}
                   </button>
-                  <Link href={"/login"} className="text-xs ml-2 text-[#389B87">Already have account?</Link>
+                  <Link href={"/login"} className="text-xs ml-2 text-[#389B87">
+                    Already have account?
+                  </Link>
                 </div>
                 <span className="text-red-400 text-xs">{error}</span>
               </div>

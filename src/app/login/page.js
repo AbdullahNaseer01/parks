@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,11 +21,18 @@ const Page = () => {
     } else {
       dispatch(loginUser({ email, password }));
       Router.push("/");
+      toast.success("Successfully logged in");
     }
   };
 
   const handleGoogleSignin = () => {
-    dispatch(googleSignin());
+    try {
+      dispatch(googleSignin());
+      toast.success("Successfully signed in with Google");
+      Router.push("/");
+    } catch (error) {
+      toast.error("Error signing in with Google");
+    }
   };
 
   return (
