@@ -55,7 +55,7 @@
 //     </>
 //   );
 // }
-"use client";
+"use client"; 
 import React from "react";
 import SearchOptions from "./components/searchOptions/SearchOptions";
 import Blogs from "./components/blogs/Blogs";

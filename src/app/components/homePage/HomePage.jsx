@@ -187,7 +187,7 @@
 // }
 
 
-"use client";
+"use client"; 
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

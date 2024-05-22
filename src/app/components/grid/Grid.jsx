@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchParks } from "../../redux/slices/parksSlice";
