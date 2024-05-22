@@ -218,4 +218,8 @@ const Page = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Page;
+=======
+export default page;
+>>>>>>> 8bcf9e12b7e7938a370bd3c633682bf0e86468e2

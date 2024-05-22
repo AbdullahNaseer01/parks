@@ -13,7 +13,7 @@ const Navbar = ({ styleProps = {} }) => {
     <header className="absolute top-0 left-0 right-0 z-50 lg:px-16 px-4 bg-transparent flex flex-wrap items-center py-4">
       <div className="flex-1 flex justify-between items-center">
         <Link href="/" className="text-xl" style={styleProps}>
-        TrailTales
+          TrailTales
         </Link>
       </div>
       <label
@@ -41,7 +41,7 @@ const Navbar = ({ styleProps = {} }) => {
         id="menu"
       >
         <nav>
-          <ul className="md:flex items-center justify-between text-base pt-4 md:pt-0">
+          <ul className="md:flex items-center justify-between text-base pt-4 md:pt-0 backdrop-brightness-50  md:backdrop-brightness-100">
             <li>
               <Link
                 className="md:p-4 py-3 px-0 block"
