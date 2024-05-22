@@ -83,7 +83,7 @@ const Page = () => {
                     {isLoading ? "Loading..." : "Login"}
                   </button>
                   <Link href={"/signup"} className="text-xs ml-2 text-[#389B87">
-                    Don't have an account?
+                    Dont have an account?
                   </Link>
                 </div>
                 <span className="text-red-400 text-xs">{error}</span>
