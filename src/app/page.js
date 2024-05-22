@@ -55,22 +55,19 @@
 //     </>
 //   );
 // }
-"use client";
+"use client"; 
 import React from "react";
 import SearchOptions from "./components/searchOptions/SearchOptions";
 import Blogs from "./components/blogs/Blogs";
 import Grid from "./components/grid/Grid";
 import HomePage from "./components/homePage/HomePage";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <HomePage />
-      <SearchOptions />
-      <Grid />
-      <Blogs />
     </>
   );
 };
 
-export default page;
+export default Page;

@@ -27,7 +27,7 @@
 
 // export default AnimatedCards;
 
-"use client";
+"use client"; 
 import React, { useEffect } from "react";
 
 const AnimatedCards = ({ images }) => {

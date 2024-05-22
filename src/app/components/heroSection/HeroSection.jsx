@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import React, { useState } from "react";
 import axios from "axios";
 import { fetchParks } from "@/app/redux/slices/parksSlice";

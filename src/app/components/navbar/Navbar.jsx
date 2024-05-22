@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -52,17 +52,21 @@ const Navbar = ({ styleProps = {} }) => {
               </Link>
             </li>
             <li>
-              <a className="md:p-4 py-3 px-0 block" href="#" style={styleProps}>
-                Treatments
-              </a>
-            </li>
-            <li>
               <Link
                 href="/contact"
                 className="md:p-4 py-3 px-0 block md:mb-0 mb-2"
                 style={styleProps}
               >
                 Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/profile"
+                className="md:p-4 py-3 px-0 block md:mb-0 mb-2"
+                style={styleProps}
+              >
+                Profile
               </Link>
             </li>
             <li

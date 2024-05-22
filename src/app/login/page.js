@@ -1,14 +1,48 @@
+"use client";
 import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, googleSignin } from "../redux/slices/authSlice";
+import Link from "next/link";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Router = useRouter();
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state.auth);
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      toast.error("All fields are required");
+      return;
+    } else {
+      dispatch(loginUser({ email, password }));
+      Router.push("/");
+      toast.success("Successfully logged in");
+    }
+  };
+
+  const handleGoogleSignin = () => {
+    try {
+      dispatch(googleSignin());
+      toast.success("Successfully signed in with Google");
+      Router.push("/");
+    } catch (error) {
+      toast.error("Error signing in with Google");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-customOrange to-customLightOrange shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#389B87] to-[#94e5d5] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div>
-              <h1 className="text-2xl font-semibold">Login</h1>
+              <h1 className="text-2xl font-semibold text-[#389B87]">Login</h1>
             </div>
             <div className="divide-y divide-gray-200">
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -18,6 +52,8 @@ const page = () => {
                     id="email"
                     name="email"
                     type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Email address"
                   />
@@ -34,6 +70,8 @@ const page = () => {
                     id="password"
                     name="password"
                     type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                   />
@@ -45,15 +83,26 @@ const page = () => {
                   </label>
                 </div>
                 <div className="relative">
-                  <button className="bg-customOrange hover:bg-customLightOrange text-white rounded-md px-2 py-1">
-                    Submit
+                  <button
+                    onClick={handleLogin}
+                    className="bg-[#389B87] hover:bg-[#94e5d5] text-white rounded-md px-2 py-1"
+                  >
+                    {isLoading ? "Loading..." : "Login"}
                   </button>
+                  <Link href={"/signup"} className="text-xs ml-2 text-[#389B87">
+                    Dont have an account?
+                  </Link>
                 </div>
+                <span className="text-red-400 text-xs">{error}</span>
               </div>
             </div>
           </div>
           <div className="w-full flex justify-center">
-            <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+            <button
+              disabled={isLoading}
+              onClick={handleGoogleSignin}
+              className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            >
               <svg
                 className="h-6 w-6 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +165,7 @@ const page = () => {
                   </g>{" "}
                 </g>{" "}
               </svg>
-              <span>Continue with Google</span>
+              {isLoading ? "Loading..." : "Sign in with Google"}
             </button>
           </div>
         </div>
@@ -125,4 +174,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

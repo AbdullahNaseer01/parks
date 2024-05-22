@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client"; 
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,6 +14,8 @@ import { fetchTopics } from "../redux/slices/topicsSlice";
 import Loading from "../loading";
 import SearchGrid from "../components/searchGrid/SearchGrid";
 import Link from "next/link";
+import { toast } from "react-toastify";
+
 const SearchComponent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -31,6 +33,7 @@ const SearchComponent = () => {
     thingstodo: "Things to do",
     // topics: "Topics",
   };
+  const gridTopRef = useRef(null);
 
   const data = useSelector((state) => {
     console.log("State data:", state);
@@ -159,12 +162,15 @@ const SearchComponent = () => {
   };
 
   const handleSearchButtonClick = async (start = 0) => {
-    // Ensure start is properly handled and converted to a string
+    if (!selectedOption && !search) {
+      toast.error("Please select a category and enter a search term");
+      return;
+    }
     const startValue = typeof start === "object" ? "0" : start.toString();
-
     const params = {
       limit: "10",
       start: startValue,
+      ...(search && { q: search }),
     };
 
     switch (selectedOption) {
@@ -195,13 +201,16 @@ const SearchComponent = () => {
       default:
         break;
     }
+    if (gridTopRef.current) {
+      gridTopRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const renderGridItem = (item, index) => {
     console.log("renderGridItem - item:", item);
 
     const commonCard = (url, imageUrl, title, description, tags) => (
-      <Link href={url || "#"} target="_blank" key={index}>
+      <Link href={item?.url || "#"} target="_blank" key={index}>
         <div className="flex px-3 py-3 h-[650px] overflow-hidden">
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <img
@@ -237,7 +246,7 @@ const SearchComponent = () => {
     function validateURL(url) {
       // If URL is not available or doesn't start with "https://", return placeholder image URL
       if (!url || !url.startsWith("https://")) {
-        return "https://via.placeholder.com/150";
+        return "https://static1.anpoimages.com/wordpress/wp-content/uploads/2021/02/06/national-park-service-hero.jpg";
       }
       // If URL is valid, return it as is
       return url;
@@ -311,11 +320,6 @@ const SearchComponent = () => {
       default:
         return null;
     }
-
-    function validateURL(url) {
-      // Check if URL is valid and starts with "https://"
-      return url && url.startsWith("https://") ? url : null;
-    }
   };
 
   return (
@@ -366,7 +370,7 @@ const SearchComponent = () => {
           </form>
         </div>
       </div>
-      <div>
+      <div ref={gridTopRef}>
         <SearchGrid
           fetchData={(start) => handleSearchButtonClick(start)}
           data={data}

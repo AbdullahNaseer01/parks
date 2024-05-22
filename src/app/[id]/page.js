@@ -265,8 +265,11 @@ const Page = ({ params }) => {
     if (userLocation && parkDetails) {
       setRoute({
         origin: userLocation,
-        // destination: { lat: parseFloat(parkDetails.latitude), lng: parseFloat(parkDetails.longitude) },
-        destination: { lat: parseFloat(31.278046), lng: parseFloat(72.31176) },
+        destination: {
+          lat: parseFloat(parkDetails.latitude),
+          lng: parseFloat(parkDetails.longitude),
+        },
+        // destination: { lat: parseFloat(31.278046), lng: parseFloat(72.31176) },
       });
     }
   };

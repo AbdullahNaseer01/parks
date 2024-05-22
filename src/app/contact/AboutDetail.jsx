@@ -85,7 +85,7 @@ function AboutDetail() {
                                             ------------
                                         </p>
                                         <p className="mb-2 text-gray-600">
-                                            Our project concerns human beings’ ethical relationship with the natural environment. A serious problem exists with respect to the status and meaning of ‘environmental values’.
+                                            Our project concerns human beings ethical relationship with the natural environment. A serious problem exists with respect to the status and meaning of environmental values.
                                         </p>
                                     </div>
                                 </div>
